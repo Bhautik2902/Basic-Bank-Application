@@ -1,3 +1,5 @@
 <resources>
     <string name="app_name">BSBank</string>
+    <string name="bs_bank">BS Bank</string>
+    <string name="enjoy_the_service">Enjoy the Service!</string>
 </resources>
