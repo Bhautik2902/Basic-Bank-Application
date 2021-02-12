@@ -2,6 +2,7 @@ package com.example.bsbank;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.app.ActionBar;
 import android.content.Intent;
 import android.os.Bundle;
 import android.os.Handler;
@@ -16,11 +17,8 @@ public class SplashScreen extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-
         getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN, WindowManager.LayoutParams.FLAG_FULLSCREEN );
         setContentView(R.layout.activity_splash_screen);
-
-
 
         title = findViewById(R.id.title);
         bottomline = findViewById(R.id.bottomtext);

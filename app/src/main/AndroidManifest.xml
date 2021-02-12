@@ -9,14 +9,29 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.BSBank">
-        <activity android:name=".SplashScreen"><intent-filter>
-            <action android:name="android.intent.action.MAIN" />
+        <activity android:name=".MakeTransaction"></activity>
+        <activity android:name=".makeTransaction" />
+        <activity android:name=".AddUser" />
+        <activity android:name=".Transaction_record" />
+        <activity android:name=".Profile_page" />
+        <activity android:name=".Registered_people" />
+        <activity
+            android:name=".SplashScreen"
+            android:screenOrientation="portrait"
+            android:theme="@style/Theme.AppCompat.NoActionBar">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
 
-            <category android:name="android.intent.category.LAUNCHER" />
-        </intent-filter></activity>
-        <activity android:name=".MainActivity">
-
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
         </activity>
+        <activity
+            android:name=".MainActivity"
+            android:screenOrientation="portrait" />
+
+        <meta-data
+            android:name="preloaded_fonts"
+            android:resource="@array/preloaded_fonts" />
     </application>
 
 </manifest>
