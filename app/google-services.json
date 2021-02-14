@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "179116406413",
+    "project_id": "web-banking-2ce3c",
+    "storage_bucket": "web-banking-2ce3c.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:179116406413:android:5a803c6f33c1d43c3ad4c4",
+        "android_client_info": {
+          "package_name": "com.example.bsbank"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "179116406413-e04etae9qrdp5h351kf3oa7ukd9lmm6h.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBj0JPjdcb2iSsrfUPzJqF1aVQpxN62W5A"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "179116406413-e04etae9qrdp5h351kf3oa7ukd9lmm6h.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

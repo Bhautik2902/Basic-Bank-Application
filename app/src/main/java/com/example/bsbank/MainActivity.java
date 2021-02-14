@@ -14,8 +14,7 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 public class MainActivity extends AppCompatActivity {
-    TextView title, bottomline;
-    ImageView logoImg;
+
     ImageButton profile_btn, registered, transaction, add_user;
     Button makeTransaction;
 

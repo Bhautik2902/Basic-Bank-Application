@@ -10,8 +10,8 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.BSBank">
         <activity android:name=".MakeTransaction"></activity>
-        <activity android:name=".makeTransaction" />
-        <activity android:name=".AddUser" />
+        <activity android:name=".AddUser"
+            android:label="Add User" />
         <activity android:name=".Transaction_record" />
         <activity android:name=".Profile_page" />
         <activity android:name=".Registered_people" />
