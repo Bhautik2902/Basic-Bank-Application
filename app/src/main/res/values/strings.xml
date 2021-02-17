@@ -13,4 +13,7 @@
     <string name="current_balance">Current Balance</string>
     <string name="submit">submit</string>
     <string name="user_logo">User logo</string>
+    <string name="sender_details">Sender details</string>
+    <string name="account_number_tra">Account number</string>
+    <string name="receiver_details">Receiver details</string>
 </resources>

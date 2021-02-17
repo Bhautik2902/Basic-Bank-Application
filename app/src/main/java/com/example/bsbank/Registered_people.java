@@ -37,7 +37,6 @@ public class Registered_people extends AppCompatActivity {
         customAdapter = new CustomAdapter(this, first_name, last_name, mobile_no, balance);
         recycleView.setAdapter(customAdapter);
         recycleView.setLayoutManager(new LinearLayoutManager(this));
-
     }
 
     public void storeDataInArray() {
