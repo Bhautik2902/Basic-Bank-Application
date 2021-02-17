@@ -11,7 +11,10 @@
         android:theme="@style/Theme.BSBank">
         <activity android:name=".MakeTransaction"></activity>
         <activity android:name=".AddUser"
-            android:label="Add User" />
+            android:label="Add User"
+            android:parentActivityName=".MainActivity"
+            android:screenOrientation="portrait"/>
+
         <activity android:name=".Transaction_record" />
         <activity android:name=".Profile_page" />
         <activity android:name=".Registered_people" />

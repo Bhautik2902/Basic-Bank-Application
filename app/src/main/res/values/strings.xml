@@ -12,4 +12,5 @@
     <string name="ifs_code">IFS Code</string>
     <string name="current_balance">Current Balance</string>
     <string name="submit">submit</string>
+    <string name="user_logo">User logo</string>
 </resources>
