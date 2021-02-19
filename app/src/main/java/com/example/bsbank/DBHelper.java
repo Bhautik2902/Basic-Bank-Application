@@ -5,6 +5,7 @@ import android.content.Context;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
+import android.widget.Toast;
 
 import androidx.annotation.Nullable;
 
@@ -54,4 +55,39 @@ public class DBHelper extends SQLiteOpenHelper {
         }
         return data;
     }
+
+    public Cursor getSpecificData(String acc_no, String ifsc) {
+        SQLiteDatabase db = this.getWritableDatabase();
+
+        String qry = "SELECT * FROM Userdetails WHERE Account_no=" + acc_no;
+        Cursor crs = db.rawQuery(qry, null);
+        return crs;
+    }
+
+    public boolean updateBalance(Context context, String sender_acc_no, String rcvr_acc_no, int tra_amt) {
+        boolean flag = false;
+        int current_bal=0;
+        SQLiteDatabase db = this.getWritableDatabase();
+        Cursor crs = db.rawQuery("SELECT * FROM Userdetails WHERE Account_no=" + sender_acc_no, null);
+        if (crs.getCount() == 0) {
+            Toast.makeText(context, "Couldn't Update!",Toast.LENGTH_SHORT).show();
+        }
+        else {
+            while(crs.moveToNext()) {
+                current_bal = crs.getInt(6);
+            }
+        }
+
+        if (current_bal >= tra_amt) {
+            String sender_qry = "UPDATE Userdetails SET Current_balance = Current_balance - " + tra_amt + " WHERE account_no=" + sender_acc_no;
+            db.execSQL(sender_qry);
+            flag = true;
+        }
+
+        String rcvr_qry = "UPDATE Userdetails SET Current_balance = Current_balance + "+ tra_amt +" WHERE account_no=" + rcvr_acc_no;
+        db.execSQL(rcvr_qry);
+        return flag;
+    }
+
+
 }

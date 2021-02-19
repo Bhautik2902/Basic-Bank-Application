@@ -51,6 +51,8 @@
                 android:layout_height="45dp"
                 android:layout_margin="10dp"
                 android:layout_marginTop="24dp"
+                android:drawablePadding="8dp"
+                android:inputType="number"
                 android:background="@drawable/custom_edittext"
                 android:drawableStart="@drawable/custom_account_no"
                 android:hint="@string/account_number_tra"
@@ -66,6 +68,7 @@
                 android:layout_height="45dp"
                 android:layout_marginHorizontal="10dp"
                 android:layout_marginVertical="5dp"
+                android:drawablePadding="8dp"
                 android:background="@drawable/custom_edittext"
                 android:drawableStart="@drawable/custom_ifsc"
                 android:hint=" IFSC"
@@ -177,6 +180,8 @@
                 android:layout_height="45dp"
                 android:layout_margin="10dp"
                 android:layout_marginTop="24dp"
+                android:drawablePadding="8dp"
+                android:inputType="number"
                 android:background="@drawable/custom_edittext"
                 android:drawableStart="@drawable/custom_account_no"
                 android:hint="@string/account_number_tra"
@@ -195,6 +200,7 @@
                 android:layout_height="45dp"
                 android:layout_marginHorizontal="10dp"
                 android:layout_marginVertical="5dp"
+                android:drawablePadding="8dp"
                 android:background="@drawable/custom_edittext"
                 android:drawableStart="@drawable/custom_ifsc"
                 android:hint=" IFSC"
@@ -232,7 +238,8 @@
                     android:layout_height="30dp"
                     android:paddingStart="8dp"
                     android:background="@drawable/transaction_bg"
-                    android:textSize="18sp" />
+                    android:textSize="15sp"
+                    android:padding="4dp"/>
             </LinearLayout>
 
             <LinearLayout
@@ -245,20 +252,15 @@
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/linearLayout5">
 
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="30dp"
-                    android:layout_gravity="center_vertical"
-                    android:layout_marginRight="8dp"
-                    android:drawableStart="@drawable/custom_balance"
-                    android:text=" Pay"
-                    android:textSize="18sp" />
-
                 <EditText
+                    android:id="@+id/send_money"
                     android:layout_width="match_parent"
                     android:layout_height="35dp"
                     android:background="@drawable/custom_edittext"
                     android:paddingStart="8dp"
+                    android:drawablePadding="8dp"
+                    android:hint="Amount to pay"
+                    android:drawableStart="@drawable/custom_balance"
                     android:inputType="number">
 
                 </EditText>
@@ -270,14 +272,34 @@
     </LinearLayout>
 
     <Button
+        android:id="@+id/submit_btn"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="PAY"
-        android:textSize="25sp"
+        android:text="submit"
+        android:textSize="15sp"
+        android:textStyle="bold"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.498"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/Receiver_details" />
+        app:layout_constraintTop_toBottomOf="@+id/Receiver_details"
+        app:layout_constraintVertical_bias="0.0" />
+
+    <Button
+        android:id="@+id/pay_btn"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="108dp"
+        android:fontFamily="@font/basic"
+        android:text="Pay now >"
+        android:textSize="20sp"
+        android:textStyle="bold"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="1.0"
+        app:layout_constraintStart_toEndOf="@+id/submit_btn"
+        app:layout_constraintTop_toBottomOf="@+id/Receiver_details"
+        app:layout_constraintVertical_bias="1.0" />
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>
