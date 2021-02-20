@@ -12,11 +12,15 @@ import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import java.text.SimpleDateFormat;
+import java.util.Date;
+
 public class MakeTransaction extends AppCompatActivity {
 
     EditText acc_no_sender, acc_no_rcvr, ifsc_sender, ifsc_rcvr, money;
     TextView sender_name, rcvr_name, available_amt;
     String sender_accNo=null, rcvr_accNo=null, sender_ifsc=null, rcvr_ifsc=null;
+    String sender_fullname=null, rcvr_fullname=null;
     Button submit, pay;
     DBHelper dbHelper;
     Boolean isSubmitted=false;
@@ -74,7 +78,8 @@ public class MakeTransaction extends AppCompatActivity {
                     }
                     else {
                         while(crsr1.moveToNext()) {
-                            sender_name.setText(crsr1.getString(0) + " " + crsr1.getString(1));
+                            sender_fullname = crsr1.getString(0) + " " + crsr1.getString(1);
+                            sender_name.setText(sender_fullname);
                             available_amt.setText(String.valueOf(crsr1.getInt(6)));
                         }
                     }
@@ -83,13 +88,13 @@ public class MakeTransaction extends AppCompatActivity {
 
                     Cursor crsr_rcvr = dbHelper.getSpecificData(rcvr_accNo, rcvr_ifsc);
                     if (crsr_rcvr.getCount() == 0) {
-                        Toast.makeText(MakeTransaction.this, "No record found of given receiver details!",Toast.LENGTH_LONG).show();
+                        Toast.makeText(MakeTransaction.this, "No record found for given receiver details!",Toast.LENGTH_LONG).show();
                         rcvr_name.setText("");
                     }
-                  //  Cursor l_name_rcvr = dbHelper.getSpecificData(rcvr_accNo, rcvr_ifsc);
                     else {
                         while(crsr_rcvr.moveToNext()) {
-                            rcvr_name.setText(crsr_rcvr.getString(0) + " " + crsr_rcvr.getString(1));
+                            rcvr_fullname = crsr_rcvr.getString(0) + " " + crsr_rcvr.getString(1);
+                            rcvr_name.setText(rcvr_fullname);
                         }
                     }
                     isSubmitted = true;
@@ -121,6 +126,15 @@ public class MakeTransaction extends AppCompatActivity {
                         boolean isPossible = dbhelper.updateBalance(MakeTransaction.this, sender_accNo, rcvr_accNo, update_money);
                         if (isPossible == true) {
                             Toast.makeText(MakeTransaction.this, "Transaction Successful", Toast.LENGTH_SHORT).show();
+
+                            // add successful transaction in passbook
+                            String timestamp = new SimpleDateFormat("dd/MM/yyyy HH:mm:ss").format(new Date());
+                            boolean isTransactionInserted = dbhelper.insertDataInPassbook(sender_fullname, rcvr_fullname, sender_accNo, rcvr_accNo, timestamp, update_money);
+                            if (isTransactionInserted == true) {
+                                Toast.makeText(MakeTransaction.this, "Successfully added in passbook", Toast.LENGTH_LONG).show();
+                            } else {
+                                Toast.makeText(MakeTransaction.this, "Couldn't add in passbook", Toast.LENGTH_LONG).show();
+                            }
                             acc_no_sender.setText("");    sender_name.setText("");
                             acc_no_rcvr.setText("");    rcvr_name.setText("");
                             ifsc_sender.setText("");    available_amt.setText("");

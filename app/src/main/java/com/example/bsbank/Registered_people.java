@@ -40,7 +40,7 @@ public class Registered_people extends AppCompatActivity {
     }
 
     public void storeDataInArray() {
-        Cursor cursor = dbHelper.getAllData();
+        Cursor cursor = dbHelper.getAllData("Userdetails");
         if (cursor.getCount() == 0) {
             Toast.makeText(this, "No data to show", Toast.LENGTH_SHORT).show();
         }

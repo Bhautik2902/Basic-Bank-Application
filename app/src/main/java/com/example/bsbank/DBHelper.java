@@ -19,11 +19,13 @@ public class DBHelper extends SQLiteOpenHelper {
     @Override
     public void onCreate(SQLiteDatabase db) {
         db.execSQL("create Table Userdetails(First_Name TEXT, Last_Name TEXT, Mobile_No TEXT UNIQUE, Email TEXT UNIQUE, Account_No TEXT primary key UNIQUE, IFSC TEXT, Current_balance INTEGER)");
+        db.execSQL("create Table Passbook(SenderName TEXT, ReceiverName TEXT, Sender_accno TEXT, Receiver_accno TEXT, Dt datetime DEFAULT CURRENT_TIMESTAMP, Amount INT)");
     }
 
     @Override
     public void onUpgrade(SQLiteDatabase db, int i, int i1) {
         db.execSQL("drop Table if exists Userdetails");
+        db.execSQL("drop table if exists Passbook");
         onCreate(db);
     }
 
@@ -47,11 +49,30 @@ public class DBHelper extends SQLiteOpenHelper {
         }
     }
 
-    public Cursor getAllData() {
+    public boolean insertDataInPassbook(String sender_name, String rcvr_name, String sender_accno, String rcvr_accno, String date_time, int amount) {
+        SQLiteDatabase DB = this.getWritableDatabase();
+        ContentValues contentValues = new ContentValues();
+        contentValues.put("SenderName", sender_name);
+        contentValues.put("ReceiverName", rcvr_name);
+        contentValues.put("Sender_accno", sender_accno);
+        contentValues.put("Receiver_accno", rcvr_accno);
+        contentValues.put("Dt", date_time);
+        contentValues.put("Amount",amount);
+
+        long result = DB.insert("Passbook", null, contentValues);
+        if (result == -1) {
+            return false;
+        }
+        else {
+            return true;
+        }
+    }
+
+    public Cursor getAllData(String table_name) {
         SQLiteDatabase DB = this.getReadableDatabase();
         Cursor data=null;
         if (DB != null) {
-            data = DB.rawQuery("Select * from Userdetails", null);
+            data = DB.rawQuery("Select * from " + table_name, null);
         }
         return data;
     }
