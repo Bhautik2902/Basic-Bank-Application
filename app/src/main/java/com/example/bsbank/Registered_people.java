@@ -4,11 +4,18 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import android.content.Intent;
 import android.database.Cursor;
 import android.os.Bundle;
+import android.util.Log;
+import android.view.View;
 import android.widget.Toast;
 
+import com.google.android.material.tabs.TabLayout;
+
 import java.util.ArrayList;
+
+import static android.content.ContentValues.TAG;
 
 public class Registered_people extends AppCompatActivity {
 
@@ -17,6 +24,8 @@ public class Registered_people extends AppCompatActivity {
     ArrayList<String> first_name, last_name, mobile_no, email, acc_no, ifs;
     ArrayList<Integer> balance;
     CustomAdapter customAdapter;
+    private CustomAdapter.RecyclerViewClickListener listener;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -34,9 +43,37 @@ public class Registered_people extends AppCompatActivity {
         balance = new ArrayList<>();
 
         storeDataInArray();
-        customAdapter = new CustomAdapter(this, first_name, last_name, mobile_no, balance);
+        setOnClickListener();
+        customAdapter = new CustomAdapter(this, first_name, last_name, mobile_no, balance, listener);
         recycleView.setAdapter(customAdapter);
         recycleView.setLayoutManager(new LinearLayoutManager(this));
+
+    }
+
+    private void setOnClickListener() {
+        listener = (v, position) -> {
+            try {
+                Intent intent = new Intent(getApplicationContext(), CustomerProfile.class);
+                // find account no.
+                String account_no = acc_no.get(position);
+                String ifsc = ifs.get(position);
+
+                Cursor cursor = dbHelper.getSpecificData(account_no, ifsc);
+                cursor.moveToNext();
+                intent.putExtra("Firstname", cursor.getString(0));
+                intent.putExtra("Lastname", cursor.getString(1));
+                intent.putExtra("Email", cursor.getString(2));
+                intent.putExtra("Contact No", cursor.getString(3));
+                intent.putExtra("Account No", cursor.getString(4));
+                intent.putExtra("IFSC", cursor.getString(5));
+                intent.putExtra("Balance", cursor.getInt(6));
+
+                startActivity(intent);
+            }
+            catch (Exception e) {
+                Log.d(TAG, "onClick: problem in fetching" + e);
+            }
+        };
     }
 
     public void storeDataInArray() {

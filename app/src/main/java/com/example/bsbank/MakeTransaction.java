@@ -84,8 +84,6 @@ public class MakeTransaction extends AppCompatActivity {
                         }
                     }
 
-//                    Cursor amt = dbHelper.getSpecificData(sender_accNo, sender_ifsc);
-
                     Cursor crsr_rcvr = dbHelper.getSpecificData(rcvr_accNo, rcvr_ifsc);
                     if (crsr_rcvr.getCount() == 0) {
                         Toast.makeText(MakeTransaction.this, "No record found for given receiver details!",Toast.LENGTH_LONG).show();

@@ -20,7 +20,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content">
 
-            <ImageButton
+            <ImageView
                 android:id="@+id/user_profile"
                 android:contentDescription="@string/user_logo"
                 android:layout_width="65dp"

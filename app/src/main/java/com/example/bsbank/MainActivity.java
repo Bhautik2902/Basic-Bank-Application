@@ -23,19 +23,12 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        profile_btn = (ImageButton) findViewById(R.id.profile_imgbtn);
         registered = (ImageButton) findViewById(R.id.registered_imgbtn);
         transaction = (ImageButton) findViewById(R.id.transaction_imgbtn);
         add_user = (ImageButton) findViewById(R.id.adduser_imgbtn);
         makeTransaction = (Button) findViewById(R.id.maketransaction_imgbtn);
 
-        profile_btn.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Intent intent_profile = new Intent(MainActivity.this, Profile_page.class);
-                startActivity(intent_profile);
-            }
-        });
+
 
         registered.setOnClickListener(new View.OnClickListener() {
             @Override

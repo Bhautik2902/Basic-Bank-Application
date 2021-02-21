@@ -9,30 +9,30 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.BSBank">
-        <activity android:name=".MakeTransaction"
+        <activity android:name=".CustomerProfile"
+            android:label="Customer Profile"
+            android:parentActivityName=".MainActivity"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".MakeTransaction"
             android:label="Make Transaction"
             android:parentActivityName=".MainActivity"
-            android:screenOrientation="portrait">
-        </activity>
-        <activity android:name=".AddUser"
+            android:screenOrientation="portrait"></activity>
+        <activity
+            android:name=".AddUser"
             android:label="Add User"
             android:parentActivityName=".MainActivity"
-            android:screenOrientation="portrait"/>
-
-        <activity android:name=".Transaction_record"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".Transaction_record"
             android:label="Transactions"
             android:parentActivityName=".MainActivity"
             android:screenOrientation="portrait" />
-
-        <activity android:name=".Profile_page"
-            android:label="Your Profile"
-            android:parentActivityName=".MainActivity"
-            android:screenOrientation="portrait"/>
-
-        <activity android:name=".Registered_people"
+        <activity
+            android:name=".Registered_people"
             android:label="Your Contacts"
             android:parentActivityName=".MainActivity"
-            android:screenOrientation="portrait"/>
+            android:screenOrientation="portrait" />
         <activity
             android:name=".SplashScreen"
             android:screenOrientation="portrait"
